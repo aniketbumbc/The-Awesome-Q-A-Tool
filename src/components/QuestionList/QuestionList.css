@@ -1,0 +1,57 @@
+.remove-question {
+  background-color: rgb(218, 91, 116);
+}
+
+.sort-question {
+  background-color: rgb(109, 221, 109);
+}
+
+.fa-edit {
+  color: var(--color-blue);
+  padding: 0em 0.3em;
+  font-size: 1.2em;
+  cursor: pointer;
+}
+
+.fa-trash-alt {
+  color: var(--color-red);
+  font-size: 1.2em;
+  cursor: pointer;
+}
+
+.questions-container {
+  border: 1px solid rgb(113, 139, 212);
+  box-sizing: border-box;
+  box-shadow: 4px 4px var(--color-blue);
+  padding: 20px;
+  width: 100%;
+}
+
+.question {
+  font-size: 1em;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.answer {
+  font-weight: normal;
+  display: none;
+}
+
+.questionslist-container {
+  margin-top: 2em;
+  padding-right: 15em;
+}
+
+.questionlist-title {
+  font-size: 25px;
+  color: var(--color-blue);
+}
+
+.container {
+  display: flex;
+}
+
+.icons {
+  float: right;
+}

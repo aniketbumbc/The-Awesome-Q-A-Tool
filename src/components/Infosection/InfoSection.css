@@ -1,0 +1,16 @@
+.info-container {
+  margin-top: 5em;
+}
+
+.divider {
+  margin-top: 2em;
+  border-right: 2px solid var(--color-blue);
+  height: 100%;
+  position: absolute;
+  left: 20%;
+}
+
+.info-text {
+  width: 50%;
+  padding-left: 1.5em;
+}
