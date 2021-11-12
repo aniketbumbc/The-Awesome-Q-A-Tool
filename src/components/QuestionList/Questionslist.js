@@ -32,7 +32,12 @@ const QuestionsList = () => {
         <InfoSection questionsCount={questionList.length} />
 
         <div className='questionslist-container'>
-          <h3 className='questionlist-title'> Questions List</h3>
+          <h3
+            className='questionlist-title tooltip'
+            data-tooltip='Here you find created questions and their answers.'
+          >
+            Questions List
+          </h3>
           {!!questionList.length &&
             questionList.map((question) => (
               <div className='questions-container' key={question.id}>
@@ -49,8 +54,8 @@ const QuestionsList = () => {
               </div>
             ))}
 
-          <button className='sort-question'>Sort Questions </button>
-          <button className='remove-question'>Remove All Questions </button>
+          <button className='sort-question'>Sort Questions</button>
+          <button className='remove-question'>Remove All Questions</button>
         </div>
       </div>
     </>

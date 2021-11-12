@@ -5,7 +5,12 @@ const Questions = () => {
     <div>
       <div className='question-container'>
         <div className='question-form'>
-          <h3 className='question-form-title'> Created Questions </h3>
+          <h3
+            className='question-form-title tooltip'
+            data-tooltip='Here you create a new question and their answers.'
+          >
+            Created Questions
+          </h3>
 
           <form>
             <lable className='label'>Question</lable>
