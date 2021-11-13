@@ -13,14 +13,20 @@ const Questions = () => {
           </h3>
 
           <form>
-            <lable className='label'>Question</lable>
-            <input type='text' />
-            <lable className='label'>Answer</lable>
-            <textarea rows='4' cols='100'>
-              Enter text here...
-            </textarea>
+            <label className='label'>Question</label>
+            <input type='text' size='99' className='question-input' />
+            <label className='label'>Answer</label>
+            <textarea
+              rows='4'
+              cols='85'
+              defaultValue=' Enter text here...'
+            ></textarea>
+            <label className='check-box-dealy'>
+              Dealy
+              <input type='checkbox' style={{ marginLeft: 5 }} />
+            </label>
             <button type='submit' className='submit-btn'>
-              Create question
+              Create Question
             </button>
           </form>
         </div>

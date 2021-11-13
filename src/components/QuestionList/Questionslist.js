@@ -1,4 +1,7 @@
+import { useState, useRef } from 'react';
 import './QuestionList.css';
+import 'react-responsive-modal/styles.css';
+import { Modal } from 'react-responsive-modal';
 import InfoSection from '../Infosection/InfoSection';
 
 const questionList = [
@@ -20,17 +23,51 @@ const questionList = [
   },
 ];
 
+const customStyles = {
+  content: {
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -50%)',
+  },
+};
+
 const showAnswer = (id) => {
   const CState = document.getElementById(id);
   CState.style.display = CState.style.display !== 'block' ? 'block' : 'none';
 };
 
 const QuestionsList = () => {
+  const [editQuestion, setEditQuestion] = useState(null);
+  const [openModal, setOpenModal] = useState(null);
+  const editTextInput = useRef('');
+
+  const handleEditQuestion = (question) => {
+    console.log(question);
+    setEditQuestion(question);
+    setOpenModal({ open: true });
+
+    console.log(openModal);
+  };
+
+  const handleCloseModal = () => {
+    setOpenModal({ open: false });
+    setEditQuestion(null);
+  };
+
+  const updateQuestion = () => {
+    console.log(editTextInput.current.value);
+    console.log(editQuestion);
+    setOpenModal({ open: false });
+    setEditQuestion(null);
+  };
+
   return (
     <>
       <div className='container'>
         <InfoSection questionsCount={questionList.length} />
-
         <div className='questionslist-container'>
           <h3
             className='questionlist-title tooltip'
@@ -48,7 +85,10 @@ const QuestionsList = () => {
                   {question.answer}
                 </span>
                 <div className='icons'>
-                  <i className='fas fa-edit'></i>
+                  <i
+                    className='fas fa-edit'
+                    onClick={() => handleEditQuestion(question)}
+                  ></i>
                   <i className='far fa-trash-alt'></i>
                 </div>
               </div>
@@ -57,6 +97,29 @@ const QuestionsList = () => {
           <button className='sort-question'>Sort Questions</button>
           <button className='remove-question'>Remove All Questions</button>
         </div>
+        {editQuestion && (
+          <div className='edit-modal'>
+            <Modal
+              open={openModal}
+              onClose={handleCloseModal}
+              closeOnOverlayClick={false}
+              styles={{ modal: { top: '40%' } }}
+            >
+              <h3 className='edit-title'>Edit Your Question </h3>
+              <input
+                ref={editTextInput}
+                className='input-edit-question'
+                type='text'
+                defaultValue={editQuestion.question}
+                autoComplete='off'
+                size='99'
+              />
+              <button className='save-btn' onClick={updateQuestion}>
+                Save
+              </button>
+            </Modal>
+          </div>
+        )}
       </div>
     </>
   );

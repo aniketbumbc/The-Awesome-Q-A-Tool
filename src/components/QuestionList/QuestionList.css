@@ -33,6 +33,10 @@
   cursor: pointer;
 }
 
+.input-edit-question {
+  height: 25px;
+}
+
 .answer {
   font-weight: normal;
   display: none;
@@ -54,4 +58,20 @@
 
 .icons {
   float: right;
+}
+
+.edit-modal {
+  margin: 0 auto;
+}
+
+.edit-title {
+  font-size: 25px;
+  color: var(--color-blue);
+  margin-top: 0.3em;
+  margin-bottom: 0.3em;
+}
+
+.save-btn {
+  background-color: rgb(109, 221, 109);
+  margin-left: 12px;
 }
