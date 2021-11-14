@@ -5,7 +5,7 @@
 
 .question-container {
   position: absolute;
-  left: 33%;
+  left: 37%;
   /* top: 50%; */
   /* -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%); */
@@ -34,17 +34,15 @@
   font-size: 1em;
 }
 
-/* input[type='text'] {
-  padding: 0.5em 20.6em;
-  line-height: 1.5em;
-} */
-
 .question-input {
   height: 25px;
+  font-size: 15px;
+  padding: 5px;
 }
 
 textarea {
   display: block;
+  font-size: 15px;
 }
 .submit-btn {
   background-color: rgb(109, 221, 109);
