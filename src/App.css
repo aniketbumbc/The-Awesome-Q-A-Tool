@@ -1,3 +1,7 @@
+* {
+  margin: 0;
+  padding: 0;
+}
 :root {
   --color-red: rgb(223, 109, 109);
   --color-blue: rgb(82, 82, 230);
@@ -5,14 +9,14 @@
 }
 
 button {
-  padding: 0.6em 1em;
+  padding: 10px 15px;
   border-radius: 8px;
   color: var(--color-blue);
-  font-size: 1em;
+  font-size: 16px;
   border: 0;
   cursor: pointer;
-  margin-top: 1em;
-  margin-right: 1em;
+  margin-top: 20px;
+  margin-right: 20px;
 }
 
 .tooltip {
@@ -37,7 +41,7 @@ button {
   bottom: 0;
   line-height: 15px;
   font-size: 11px;
-  left: 20%;
+  left: 15%;
   transform: translate(-50%, calc(100% + 10px));
 }
 
@@ -60,6 +64,6 @@ button {
 
 .tooltip::before {
   bottom: 0;
-  left: 20%;
+  left: 15%;
   transform: translate(-50%, calc(100% + 5px)) rotate(45deg);
 }

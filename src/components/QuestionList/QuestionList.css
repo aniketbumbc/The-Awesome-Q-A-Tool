@@ -1,21 +1,24 @@
 .remove-question {
   background-color: rgb(218, 91, 116);
 }
-
 .sort-question {
   background-color: rgb(109, 221, 109);
 }
-
+.actions {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
 .fa-edit {
   color: var(--color-blue);
-  padding: 0em 0.3em;
-  font-size: 1.2em;
+  padding: 10px 15px;
+  font-size: 20px;
   cursor: pointer;
 }
 
 .fa-trash-alt {
   color: var(--color-red);
-  font-size: 1.2em;
+  font-size: 20px;
   cursor: pointer;
 }
 
@@ -23,12 +26,12 @@
   border: 1px solid rgb(113, 139, 212);
   box-sizing: border-box;
   box-shadow: 4px 4px var(--color-blue);
-  padding: 20px;
+  padding: 15px;
   width: 100%;
 }
 
 .question {
-  font-size: 1em;
+  font-size: 14px;
   font-weight: bold;
   cursor: pointer;
 }
@@ -43,12 +46,17 @@
 }
 
 .questionslist-container {
-  margin-top: 2em;
+  display: flex;
+  flex-direction: column;
+  padding: 25px 0px 0px 0px;
+  width: 80%;
+  margin: 10px;
 }
 
 .questionlist-title {
   font-size: 25px;
   color: var(--color-blue);
+  padding-bottom: 15px;
 }
 
 .container {
@@ -66,13 +74,12 @@
 .edit-title {
   font-size: 25px;
   color: var(--color-blue);
-  margin-top: 0.3em;
-  margin-bottom: 0.3em;
+  margin-top: 10px;
 }
 
 .save-btn {
   background-color: rgb(109, 221, 109);
-  margin-left: 12px;
+  margin-left: 10px;
 }
 
 .alert-warning {
@@ -85,4 +92,44 @@
   background-color: rgba(248, 215, 218, 1);
   border-color: rgba(220, 53, 69, 1);
   color: rgb(149, 65, 74);
+}
+
+/* Mobile View  */
+@media only screen and (min-width: 320px) and (max-width: 479px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+  }
+  .questionslist-container {
+    width: 90%;
+    padding: 25px 0px 0px 0px;
+    margin: 10px;
+  }
+  .react-responsive-modal-modal {
+    /* height: 60%; */
+    width: 75%;
+  }
+  .input-edit-question {
+    height: 36px;
+    width: 260px;
+  }
+  .edit-title {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+  .react-responsive-modal-closeButton {
+    top: 5px !important;
+  }
+  .save-btn {
+    background-color: rgb(109, 221, 109);
+    margin-left: 1px;
+  }
+}
+
+/* small tablet */
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+  }
 }

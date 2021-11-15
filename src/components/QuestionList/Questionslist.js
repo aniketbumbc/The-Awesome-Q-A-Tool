@@ -1,10 +1,15 @@
-import { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import './QuestionList.css';
-import 'react-responsive-modal/styles.css';
+import { useAction } from '../../Redux/hooks/useAction';
 import { Modal } from 'react-responsive-modal';
 import InfoSection from '../Infosection/InfoSection';
-import { useAction } from '../../Redux/hooks/useAction';
+import './QuestionList.css';
+import 'react-responsive-modal/styles.css';
+
+/**
+ * Method showAnswer when click on questions.
+ * @param {*question Id} id
+ */
 
 const showAnswer = (id) => {
   const answerState = document.getElementById(id);
@@ -25,16 +30,30 @@ const QuestionsList = () => {
     setQuestionsData(questions);
   }, [questions]);
 
-  const handleUpdateQuestion = (question) => {
+  /**
+   * Method showes edit modal for updation
+   * Set state for edit question.
+   * @param {*} question
+   */
+  const showEditModal = (question) => {
     setEditQuestion(question);
     setOpenModal({ open: true });
   };
 
+  /**
+   *  Method close modal when click on close icon.
+   * set edit question to null
+   */
   const handleCloseModal = () => {
     setOpenModal({ open: false });
     setEditQuestion(null);
   };
 
+  /**
+   * Method save updated question.
+   * if question is empty it keep same question so blank question is not accepted.
+   * dispatch updateQuestion method to store
+   */
   const saveUpdatedQuestion = () => {
     if (!editTextInput.current.value.length) {
       editTextInput.current.value = editQuestion.question;
@@ -44,9 +63,18 @@ const QuestionsList = () => {
     setEditQuestion(null);
   };
 
+  /**
+   * Method accept delete id
+   * dispatch to store deleteQuestion method
+   * @param {question id} id
+   */
   const handleDeleteQuestion = (id) => {
     deleteQuestion(id);
   };
+
+  /**
+   * Method sort question ascending and descending order.
+   */
   const sortQuestions = () => {
     if (sortingDirection === 'DEC') {
       setSortingDirection('ACE');
@@ -56,6 +84,10 @@ const QuestionsList = () => {
       questionsData.sort((a, b) => a.question.localeCompare(b.question));
     }
   };
+
+  /**
+   *  Method removed all question call dispatch method
+   */
 
   const removeAllQuestions = () => {
     removeQuestions();
@@ -81,16 +113,20 @@ const QuestionsList = () => {
           {!!questionsData.length &&
             questionsData.map((question) => (
               <div className='questions-container' key={question.id}>
-                <p onClick={() => showAnswer(question.id)} className='question'>
+                <p
+                  onClick={() => showAnswer(question.id)}
+                  className='question'
+                  data-testid='question'
+                >
                   {question.question}
                 </p>
-                <span className='answer' id={question.id}>
+                <span className='answer' id={question.id} data-testid='answer'>
                   {question.answer}
                 </span>
                 <div className='icons'>
                   <i
                     className='fas fa-edit'
-                    onClick={() => handleUpdateQuestion(question)}
+                    onClick={() => showEditModal(question)}
                   ></i>
                   <i
                     className='far fa-trash-alt'
@@ -101,12 +137,17 @@ const QuestionsList = () => {
             ))}
           {!!questionsData.length && (
             <>
-              <button className='sort-question' onClick={sortQuestions}>
-                Sort Questions
-              </button>
-              <button className='remove-question' onClick={removeAllQuestions}>
-                Remove All Questions
-              </button>
+              <div className='actions'>
+                <button className='sort-question' onClick={sortQuestions}>
+                  Sort Questions
+                </button>
+                <button
+                  className='remove-question'
+                  onClick={removeAllQuestions}
+                >
+                  Remove All Questions
+                </button>
+              </div>
             </>
           )}
         </div>
@@ -128,6 +169,7 @@ const QuestionsList = () => {
                 maxLength='50'
                 size='99'
               />
+
               <button className='save-btn' onClick={saveUpdatedQuestion}>
                 Save
               </button>

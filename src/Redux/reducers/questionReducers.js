@@ -2,8 +2,8 @@ const initialState = {
   questions: [
     {
       id: '23',
-      question: 'How to add a question?',
-      answer: 'Just use the form below!!!!',
+      question: 'how to add a question?',
+      answer: 'just use the form below!!!!',
       dealy: false,
     },
   ],
@@ -16,7 +16,6 @@ const questionReducers = (state = initialState, action) => {
         ...state,
         questions: [action.payload, ...state.questions],
       };
-
     case 'update_question': {
       const questionIndex = state.questions.findIndex(
         (question) => question.id === action.payload.questionId
@@ -37,14 +36,12 @@ const questionReducers = (state = initialState, action) => {
         questions: filteredQuestions,
       };
     }
-
     case 'delete_all_question': {
       return {
         ...state,
         questions: [],
       };
     }
-
     default:
       return state;
   }

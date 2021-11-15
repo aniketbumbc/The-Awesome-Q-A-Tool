@@ -4,7 +4,21 @@
   color: var(--color-light-blue);
 }
 .app-title {
-  font-size: 2.4em;
+  font-size: 30px;
   text-align: center;
-  padding: 0.4em 0em;
+  padding: 15px 20px;
+}
+
+@media only screen and (min-width: 320px) and (max-width: 479px) {
+  .app-header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .mobile .app-nav {
+    min-width: 0;
+    text-align: left;
+    border-right: none;
+  }
 }
