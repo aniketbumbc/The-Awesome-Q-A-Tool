@@ -49,6 +49,7 @@ npm test
 ![Desktop](./assets/images/desktopView.png?raw=true 'Desktop')
 
 **Ipad**
+
 ![Ipad](./assets/images/ipadView.png?raw=true 'Ipad')
 
 **Mobile**
