@@ -2,13 +2,16 @@
   display: flex;
   justify-content: center;
 }
+
 .question-container {
   display: flex;
   width: 0%;
 }
+
 .question-form {
   margin-top: 10px;
 }
+
 .info-section-container {
   flex: 1;
   padding: 15px;
@@ -31,25 +34,71 @@
 .question-input {
   height: 25px;
   font-size: 15px;
-  border: 1px solid black;
+  border: 1px solid var(--color-black);
 }
 
 textarea {
   display: block;
-  border: 1px solid black;
+  border: 1px solid var(--color-black);
   font-size: 15px;
 }
+
 .submit-btn {
   background-color: rgb(109, 221, 109);
   margin-left: 40px;
 }
 
-.check-box-dealy {
+.check-box-delay {
   display: block;
   padding-top: 10px;
-  font-size: 15px;
+  font-size: 18px;
 }
 
+.disable-click {
+  pointer-events: none;
+}
+
+.loader {
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 40px;
+  width: 40px;
+  margin: -25px 0 0 -25px;
+  border: 4px rgba(0, 0, 0, 0.25) solid;
+  border-top: 4px solid var(--color-blue);
+  border-radius: 50%;
+  -webkit-animation: spin4 1s infinite linear;
+  animation: spin4 1s infinite linear;
+}
+
+@-webkit-keyframes spin4 {
+  from {
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+  to {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+}
+@keyframes spin4 {
+  from {
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+  to {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+}
+
+/* Mobile view */
 @media only screen and (min-width: 320px) and (max-width: 479px) {
   .question-container {
     display: flex;
@@ -60,8 +109,13 @@ textarea {
     display: flex;
     flex-direction: column;
   }
+  .loader {
+    top: 70%;
+  }
+  .question-input {
+    width: 275px;
+  }
 }
-
 /* small tablet */
 @media only screen and (min-width: 480px) and (max-width: 767px) {
   .section {

@@ -7,6 +7,7 @@ const initialState = {
       dealy: false,
     },
   ],
+  loading: false,
 };
 
 const questionReducers = (state = initialState, action) => {
@@ -16,6 +17,11 @@ const questionReducers = (state = initialState, action) => {
         ...state,
         questions: [action.payload, ...state.questions],
       };
+    case 'show_loader':
+      return {
+        ...state,
+        loading: action.payload,
+      };
     case 'update_question': {
       const questionIndex = state.questions.findIndex(
         (question) => question.id === action.payload.questionId
@@ -23,7 +29,7 @@ const questionReducers = (state = initialState, action) => {
       const updatedQuestions = [...state.questions];
       updatedQuestions[questionIndex].question = action.payload.questionText;
       return {
-        ...state.questions,
+        ...state,
         questions: updatedQuestions,
       };
     }

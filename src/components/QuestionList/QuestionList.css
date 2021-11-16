@@ -1,14 +1,17 @@
 .remove-question {
   background-color: rgb(218, 91, 116);
 }
+
 .sort-question {
   background-color: rgb(109, 221, 109);
 }
+
 .actions {
   display: flex;
   flex-direction: row;
   align-items: center;
 }
+
 .fa-edit {
   color: var(--color-blue);
   font-size: 20px;
@@ -109,7 +112,6 @@
     margin: 10px;
   }
   .react-responsive-modal-modal {
-    /* height: 60%; */
     width: 75%;
   }
   .input-edit-question {

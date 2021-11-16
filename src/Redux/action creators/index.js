@@ -66,3 +66,13 @@ export const removeQuestions = () => {
     dispatch({ type: 'delete_all_question' });
   };
 };
+
+/**
+ *  Method disptach to reducer function to show loader true/false
+ * @param {*} isShowLoader
+ */
+export const displayLoader = (isShowLoader) => {
+  return (dispatch) => {
+    dispatch({ type: 'show_loader', payload: isShowLoader });
+  };
+};

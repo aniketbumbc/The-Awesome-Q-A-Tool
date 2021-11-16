@@ -16,6 +16,7 @@ describe('AddQuestion', () => {
         dealy: false,
       },
     ],
+    loading: false,
   };
   const middlewares = [thunk];
   const mockStore = configureStore(middlewares);

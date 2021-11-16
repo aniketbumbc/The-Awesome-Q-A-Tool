@@ -1,11 +1,13 @@
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import { useAction } from '../../Redux/hooks/useAction';
 import { v4 as uuidv4 } from 'uuid';
 import './AddQuestion.css';
 
 const AddQuestion = () => {
-  const [dealy, setDealy] = useState(false);
-  const { addNewQuestion } = useAction();
+  const [delay, setDelay] = useState(false);
+  const { addNewQuestion, displayLoader } = useAction();
+  const loading = useSelector((state) => state.questionData);
 
   /**
    * Method addNewQuestionHander take values from form
@@ -14,36 +16,56 @@ const AddQuestion = () => {
    */
   const addNewQuestionHander = (event) => {
     event.preventDefault();
+    if (event.target.elements.delay.checked) {
+      showLoader(event.target.elements.delay.checked);
+    }
     const questionId = uuidv4();
     addNewQuestion(
       questionId,
       event.target.elements.question.value,
-      event.target.elements.question.value,
-      dealy
+      event.target.elements.answer.value,
+      delay
     );
     event.target.reset();
-    setDealy(false);
+    setDelay(false);
   };
 
   /**
-   * Method setstate with dealy checkbox checked or unchecked
+   * Based on checkbox checked and unchecked call dispatch method
+   * @param {true/flase} isDisplay
+   */
+  const showLoader = (isDisplay) => {
+    if (isDisplay) {
+      displayLoader(isDisplay);
+    }
+  };
+
+  /**
+   * Method set state with dealy checkbox checked or unchecked
    * @param {*} event
    */
-  const handleOnchangeDealy = (event) => {
-    setDealy(event.target.checked);
+  const handleOnchangeDelay = (event) => {
+    setDelay(event.target.checked);
   };
 
   return (
     <div className='section'>
       <div className='question-container'>
-        <div className='question-form'>
+        <div
+          className={
+            loading && loading.loading
+              ? 'question-form disable-click'
+              : 'question-form'
+          }
+        >
+          {loading && loading.loading && <div className='loader'></div>}
+
           <h3
             className='question-form-title tooltip'
             data-tooltip='Here you create a new question and their answers.'
           >
             Create Question
           </h3>
-
           <form data-testid='form' onSubmit={addNewQuestionHander}>
             <label className='label' id='question'>
               Question
@@ -61,20 +83,21 @@ const AddQuestion = () => {
               Answer
             </label>
             <textarea
-              rows='3'
+              rows='10'
               cols='30'
               name='answer'
               aria-labelledby='answer-textarea'
               required
             ></textarea>
-            <label className='check-box-dealy' id='dealy'>
+            <label className='check-box-delay' id='delay'>
               Delay
               <input
                 type='checkbox'
                 style={{ marginLeft: 5 }}
-                onChange={handleOnchangeDealy}
-                checked={dealy}
-                aria-labelledby='dealy'
+                onChange={handleOnchangeDelay}
+                checked={delay}
+                name='delay'
+                aria-labelledby='delay'
                 data-testid='dealy-checkbox'
               />
             </label>

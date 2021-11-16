@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useAction } from '../../Redux/hooks/useAction';
 import { Modal } from 'react-responsive-modal';
@@ -10,7 +10,6 @@ import 'react-responsive-modal/styles.css';
  * Method showAnswer when click on questions.
  * @param {*question Id} id
  */
-
 const showAnswer = (id) => {
   const answerState = document.getElementById(id);
   answerState.style.display =
@@ -23,12 +22,18 @@ const QuestionsList = () => {
   const [sortingDirection, setSortingDirection] = useState('DEC');
   const [questionsData, setQuestionsData] = useState([]);
   const editTextInput = useRef('');
-  const questions = useSelector((state) => state.questions.questions);
-  const { updateQuestion, deleteQuestion, removeQuestions } = useAction();
+  const questions = useSelector((state) => state.questionData.questions);
+  const {
+    updateQuestion,
+    deleteQuestion,
+    removeQuestions,
+    displayLoader,
+  } = useAction();
 
   useEffect(() => {
     setQuestionsData(questions);
-  }, [questions]);
+    displayLoader(false);
+  }, [questions, displayLoader]);
 
   /**
    * Method showes edit modal for updation
@@ -88,7 +93,6 @@ const QuestionsList = () => {
   /**
    *  Method removed all question call dispatch method
    */
-
   const removeAllQuestions = () => {
     removeQuestions();
   };
