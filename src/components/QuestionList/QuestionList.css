@@ -11,22 +11,24 @@
 }
 .fa-edit {
   color: var(--color-blue);
-  padding: 10px 15px;
   font-size: 20px;
   cursor: pointer;
+  margin-right: 5px;
 }
 
 .fa-trash-alt {
   color: var(--color-red);
   font-size: 20px;
   cursor: pointer;
+  margin: 0px 10px;
 }
 
 .questions-container {
   border: 1px solid rgb(113, 139, 212);
   box-sizing: border-box;
   box-shadow: 4px 4px var(--color-blue);
-  padding: 15px;
+  padding-top: 10px;
+  padding-left: 15px;
   width: 100%;
 }
 
@@ -34,6 +36,7 @@
   font-size: 14px;
   font-weight: bold;
   cursor: pointer;
+  padding-bottom: 10px;
 }
 
 .input-edit-question {
@@ -50,7 +53,7 @@
   flex-direction: column;
   padding: 25px 0px 0px 0px;
   width: 80%;
-  margin: 10px;
+  margin: 50px 10px 10px 10px;
 }
 
 .questionlist-title {

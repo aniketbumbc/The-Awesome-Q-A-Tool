@@ -35,7 +35,6 @@ const AddQuestion = () => {
 
   return (
     <div className='section'>
-      <div className='divider'></div>
       <div className='question-container'>
         <div className='question-form'>
           <h3

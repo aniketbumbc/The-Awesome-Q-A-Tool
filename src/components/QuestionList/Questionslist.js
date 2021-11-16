@@ -169,7 +169,6 @@ const QuestionsList = () => {
                 maxLength='50'
                 size='99'
               />
-
               <button className='save-btn' onClick={saveUpdatedQuestion}>
                 Save
               </button>
