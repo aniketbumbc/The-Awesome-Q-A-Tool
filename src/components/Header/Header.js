@@ -5,7 +5,7 @@ const Header = () => {
     <div>
       <div className='row'>
         <div className='app-header mobile app-nav'>
-          <h4 className='app-title'>The Awesome Q/A Tool</h4>
+          <h4 className='app-title'>The Awesome Q-A Tool</h4>
         </div>
       </div>
     </div>
